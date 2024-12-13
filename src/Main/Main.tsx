@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
+import { useDeferredValue, useEffect, useState } from "react";
 import CodeEditor from "../components/CodeEditor/CodeEditor";
 import Select from "../components/SelectList/Select";
 import RunButton from "../components/RunButton/RunButton";
@@ -25,7 +25,8 @@ const Main = () => {
     const [outputDetails, setOutputDetails] = useState([]);
     const [theme, setTheme] = useState<string>('');
     const [isErrMsg, setMsg] = useState<string>('');
-    const [isActive, setIsActive] = useState<boolean>(false)
+    const [isActive, setIsActive] = useState<boolean>(false);
+    const [activeTheme,setActiveTheme] = useState<string>('');
     const onChange = (action: string | undefined, data: string | undefined) => {
         if (action === 'code') {
             setCode(data || '')
@@ -67,16 +68,24 @@ const Main = () => {
                     })
             })
     }
-    let containerClass = styles.editor_container;
-    if (theme === "vs") {
-        containerClass += ` ${styles.lightTheme}`;
-    } else if (theme === "vs-dark") {
-        containerClass += ` ${styles.darkTheme}`;
-    } else if (theme === "hc-black") {
-        containerClass += ` ${styles.contrastTheme}`;
-    }
+   
+    useEffect(()=>{
+        const changeTheme = () => {
+            let containerClass = styles.editor_container;
+            if (theme === "vs") {
+                containerClass += ` ${styles.lightTheme}`;
+            } else if (theme === "vs-dark") {
+                containerClass += ` ${styles.darkTheme}`;
+            } else if (theme === "hc-black") {
+                containerClass += ` ${styles.contrastTheme}`;
+            }
+            setActiveTheme(containerClass)
+            return 
+        }
+        changeTheme();
+    },[theme])
     return (
-        <div className={containerClass}>
+        <div className={activeTheme}>
             <div className={styles.editor_window}>
                 <div className={styles.editor_header}>
                     <Select
