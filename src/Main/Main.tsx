@@ -21,7 +21,7 @@ interface Language {
 const Main = () => {
     const [code, setCode] = useState('//');
     const [lang, setLang] = useState<Language>({ id: 63, name: "JavaScript (Node.js 12.14.0)", label: "JavaScript (Node.js 12.14.0)", value: "javascript" });
-    const [proccessing, setProccessing] = useState(true);
+    const [proccessing, setProccessing] = useState(false);
     const [outputDetails, setOutputDetails] = useState([]);
     const [theme, setTheme] = useState<string>('');
     const [isErrMsg, setMsg] = useState<string>('');
