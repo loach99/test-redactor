@@ -6,16 +6,12 @@ import Select from "../components/SelectList/Select";
 import RunButton from "../components/RunButton/RunButton";
 import { fetchCompileCode } from "../api/compileCode";
 import { fetchCheckStatus } from "../api/checkStatus";
-import { fetchGetStatus } from "../api/getStatusCode";
 import Output from "../components/Output/Output";
 import ThemeDropdown from "../components/ThemeDropdown/ThemeDropdown";
 import { languageOptions } from "../constants/codeLanguage";
 import styles from './styles/Main.module.css'
 import Modal from "../components/Modal/Modal";
-interface statusCode {
-    id: number;
-    description: string
-}
+
 interface Language {
     id: number;
     name: string;
