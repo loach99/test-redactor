@@ -1,0 +1,40 @@
+.modalWindow {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 111;
+    inset: 0;
+    background-color: #0000004e;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* коррекция положения элемента */
+    transform: translate(-50%, -50%);
+    background-color: #fafafa;
+    border-radius: 30px;
+    border: 2px solid #dddddd;
+    padding: 50px 15px;
+
+}
+
+.modal>div:nth-child(1) {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+.modal>div:nth-child(2) {
+    padding-top: 15px;
+}
+
+@media (max-width: 480px) {
+    .modal>div:nth-child(1) {
+        font-size: 14px;
+    }
+
+    .modal>div:nth-child(2) {
+        font-size: 12px;
+    }
+}
