@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import CodeEditor from "../components/CodeEditor/CodeEditor";
 import Select from "../components/SelectList/Select";
-import RunButton from "../components/RunButton/RunButton";
 import Output from "../components/Output/Output";
 import ThemeDropdown from "../components/ThemeDropdown/ThemeDropdown";
 import { languageOptions } from "../constants/codeLanguage";
@@ -11,6 +10,7 @@ import styles from './styles/Main.module.css'
 import Modal from "../components/Modal/Modal";
 import { useTheme } from "../hooks/useTheme";
 import useCodeRun from "../hooks/useCodeRun";
+import Button from "../components/Button/Button";
 
 interface Language {
     id: number;
@@ -20,6 +20,7 @@ interface Language {
 }
 
 const Main = () => {
+
     const [code, setCode] = useState('//');
     const [lang, setLang] = useState<Language>(languageOptions[0]);
     const [isErrMsg, setMsg] = useState<string>('');
@@ -31,11 +32,9 @@ const Main = () => {
             setCode(data || '')
         }
     }
-
     const selectLanguage = (lang: string) => {
         setLang(languageOptions.filter(elem => elem.value === lang)[0])
     }
-   
     const changeTheme = () => {
         let containerClass = styles.editor_container;
         let window = styles.editor_window;
@@ -71,7 +70,7 @@ const Main = () => {
                         selectLanguage={selectLanguage} />
                     <ThemeDropdown
                         handleThemeChange={handleThemeChange} />
-                    <RunButton
+                    <Button
                         proccessing={proccessing}
                         handleCodeRun={handleCodeRun} />
                 </div>

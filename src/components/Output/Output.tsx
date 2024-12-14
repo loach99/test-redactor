@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from './styles/Output.module.css';
-const Output = ({ outputDetails, setProccessing}: any) => {
+const Output = ({ outputDetails, setProccessing}:any) => {
     const getOutput = () => {
         const statusId = outputDetails?.status?.id;
         if (statusId === 6) {
@@ -22,14 +22,14 @@ const Output = ({ outputDetails, setProccessing}: any) => {
         } else if (statusId === 5) {
             setProccessing(false);
             return (
-                <pre style={{ color: 'red' }} className="">
+                <pre style={{ color: 'red' }} >
                     {`Time Limit Exceeded`}
                 </pre>
             );
         } else if (statusId > 7) {
             setProccessing(false);
             return (
-                <pre style={{ color: 'red' }} className="">
+                <pre style={{ color: 'red' }} >
                     {atob(outputDetails?.message)}
                 </pre>
             );
@@ -37,7 +37,7 @@ const Output = ({ outputDetails, setProccessing}: any) => {
     };
     return (
         <div className={styles.output_container}>
-            <h3 className="">
+            <h3>
                 Output
             </h3>
             <div className={styles.output_body}>

@@ -1,5 +1,4 @@
 export const fetchGetStatus = async () => {
-
     const response = await fetch(`https://judge029.p.rapidapi.com/statuses`, { 
         method: 'GET',
         headers: {

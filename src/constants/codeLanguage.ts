@@ -42,3 +42,9 @@ export const languageOptions = [
         value: "typescript",
       }
 ];
+
+export const themeList = [
+    {id: 1, value: "vs-dark"}, 
+    {id: 2, value: "hc-black"}, 
+    {id: 3, value: "vs"}
+]

@@ -5,7 +5,6 @@ interface formData {
 }
 
 export const fetchCompileCode = async (formData: formData) => {
-
     const response = await fetch(import.meta.env.VITE_APP_RAPID_API_URL, {
         method: 'POST',
         headers: {
@@ -16,5 +15,6 @@ export const fetchCompileCode = async (formData: formData) => {
         },
         body: JSON.stringify(formData)
     }).then((response) => response.json())
+    
     return response;
 }

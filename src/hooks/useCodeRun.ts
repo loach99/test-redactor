@@ -7,9 +7,9 @@ interface CodeRunProps {
     setMsg: React.Dispatch<React.SetStateAction<string>>;
     setIsActive: React.Dispatch<React.SetStateAction<boolean>>
 }
-const useCodeRun = ({code, lang, setMsg, setIsActive}:CodeRunProps) => {
-        const [proccessing, setProccessing] = useState(false);
-        const [outputDetails, setOutputDetails] = useState([]);
+const useCodeRun = ({ code, lang, setMsg, setIsActive }: CodeRunProps) => {
+    const [proccessing, setProccessing] = useState(false);
+    const [outputDetails, setOutputDetails] = useState([]);
     const handleCodeRun = () => {
         setProccessing(true);
         const formData = {
@@ -25,28 +25,30 @@ const useCodeRun = ({code, lang, setMsg, setIsActive}:CodeRunProps) => {
                             setTimeout(() => {
                                 fetchCheckStatus(res.token)
                                     .then((res) => {
-                                        setOutputDetails(res)
-                                        setProccessing(false)
-                                    })
+                                        setOutputDetails(res);
+                                        setProccessing(false);
+                                    });
                             }, 1000)
                             return
                         }
                         setProccessing(false)
                         if (res.message) {
-                            setMsg(res.message)
-                            setIsActive(true)
+                            setMsg(res.message);
+                            setIsActive(true);
+                            return;
                         }
                         if (res.status_id > 6) {
-                            setMsg(btoa(res.message))
-                            setIsActive(true)
+                            setMsg(btoa(res.message));
+                            setIsActive(true);
+                            return;
                         }
                     })
                     .catch((err) => {
-                        setMsg(JSON.stringify(err))
+                        setMsg(JSON.stringify(err));
                         setIsActive(true);
-                        setProccessing(false)
+                        setProccessing(false);
                     });
-                   
+
             })
     }
     return {

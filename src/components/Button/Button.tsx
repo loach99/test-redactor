@@ -4,17 +4,13 @@ interface RunButtonProps {
     handleCodeRun: () => void,
     proccessing: boolean
 }
-
+// дизейблить кнопку 
 const RunButton = ({ handleCodeRun, proccessing }: RunButtonProps) => {
     return (
         <div>
-            {proccessing ? <button className={styles.btn} onClick={handleCodeRun}>
-                <Loader />
-            </button> :
-                <button className={styles.btn} onClick={handleCodeRun}>
-                    <p>Run code!</p>
-                </button>
-            }
+            <button className={styles.btn} onClick={handleCodeRun}>
+                {proccessing ? <Loader /> : <p>Run code!</p>}
+            </button>
         </div>
     );
 }
