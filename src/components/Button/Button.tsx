@@ -2,9 +2,9 @@ import Loader from '../Loader/Loader';
 import styles from './styles/Button.module.css'
 interface RunButtonProps {
     handleCodeRun: () => void,
-    proccessing: boolean
+    proccessing: boolean,
+    
 }
-// дизейблить кнопку 
 const RunButton = ({ handleCodeRun, proccessing }: RunButtonProps) => {
     return (
         <div>

@@ -20,7 +20,6 @@ interface Language {
 }
 
 const Main = () => {
-
     const [code, setCode] = useState('//');
     const [lang, setLang] = useState<Language>(languageOptions[0]);
     const [isErrMsg, setMsg] = useState<string>('');
@@ -61,7 +60,6 @@ const Main = () => {
     useEffect(() => {
         changeTheme();
     }, [theme])
-
     return (
         <div className={activeTheme[styles.editor_container]}>
             <div className={activeTheme[styles.editor_window]}>

@@ -11,6 +11,11 @@ const useCodeRun = ({ code, lang, setMsg, setIsActive }: CodeRunProps) => {
     const [proccessing, setProccessing] = useState(false);
     const [outputDetails, setOutputDetails] = useState([]);
     const handleCodeRun = () => {
+        if(code === '//'){
+            setMsg('Empty code');
+            setIsActive(true);
+            return;
+        }
         setProccessing(true);
         const formData = {
             language_id: lang.id,

@@ -4,7 +4,6 @@ interface ThemeProps {
     handleThemeChange: (name: string) => void
 }
 const ThemeDropdown = ({ handleThemeChange }: ThemeProps) => {
-
     return (
         <div>
             <select className={styles.select} onChange={(e) => handleThemeChange(e.target.value)}>
