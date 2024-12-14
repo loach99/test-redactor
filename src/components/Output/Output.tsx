@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from './styles/Output.module.css';
-const Output = ({ outputDetails }: any) => {
+const Output = ({ outputDetails}: any) => {
     const getOutput = () => {
         const statusId = outputDetails?.status?.id;
-        console.log(outputDetails)
         if (statusId === 6) {
             return (
                 <pre style={{ color: 'red' }}>

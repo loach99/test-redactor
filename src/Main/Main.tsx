@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useDeferredValue, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CodeEditor from "../components/CodeEditor/CodeEditor";
 import Select from "../components/SelectList/Select";
 import RunButton from "../components/RunButton/RunButton";
@@ -26,7 +26,7 @@ const Main = () => {
     const [theme, setTheme] = useState<string>('');
     const [isErrMsg, setMsg] = useState<string>('');
     const [isActive, setIsActive] = useState<boolean>(false);
-    const [activeTheme,setActiveTheme] = useState<string>('');
+    const [activeTheme, setActiveTheme] = useState<Record<string, string>>({});
     const onChange = (action: string | undefined, data: string | undefined) => {
         if (action === 'code') {
             setCode(data || '')
@@ -68,25 +68,35 @@ const Main = () => {
                     })
             })
     }
-   
-    useEffect(()=>{
-        const changeTheme = () => {
-            let containerClass = styles.editor_container;
-            if (theme === "vs") {
-                containerClass += ` ${styles.lightTheme}`;
-            } else if (theme === "vs-dark") {
-                containerClass += ` ${styles.darkTheme}`;
-            } else if (theme === "hc-black") {
-                containerClass += ` ${styles.contrastTheme}`;
-            }
-            setActiveTheme(containerClass)
-            return 
+    const changeTheme = () => {
+        let containerClass = styles.editor_container;
+        let window = styles.editor_window;
+
+        if (theme === "vs") {
+            containerClass += ` ${styles.lightTheme}`;
+            window += ` ${styles.lightThemeWindow}`
+        } else if (theme === "vs-dark") {
+            containerClass += ` ${styles.darkTheme}`;
+            window += ` ${styles.darkThemeWindow}`
+
+        } else if (theme === "hc-black") {
+            containerClass += ` ${styles.contrastTheme}`;
+            window += ` ${styles.contrastThemeWindow}`
+
         }
+        setActiveTheme({
+            [styles.editor_container]: containerClass,
+            [styles.editor_window]: window,
+        })
+        return
+    }
+    useEffect(() => {
         changeTheme();
-    },[theme])
+    }, [theme])
+
     return (
-        <div className={activeTheme}>
-            <div className={styles.editor_window}>
+        <div className={activeTheme[styles.editor_container]}>
+            <div className={activeTheme[styles.editor_window]}>
                 <div className={styles.editor_header}>
                     <Select
                         selectLanguage={selectLanguage}
@@ -100,7 +110,7 @@ const Main = () => {
             </div>
 
             <div className={styles.output}>
-                <Output outputDetails={outputDetails} />
+                <Output activeTheme={activeTheme[styles.output_container]} outputDetails={outputDetails} />
             </div>
             {isActive &&
                 <Modal setIsActive={setIsActive} isActive={isActive} textErr={isErrMsg} />

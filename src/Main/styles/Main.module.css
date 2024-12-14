@@ -45,6 +45,16 @@
     max-width: 1200px; 
     margin: 0 auto; 
   }
+
+  .lightThemeWindow {
+    border: 8px solid #b3e0fc;
+ }
+ .darkThemeWindow {
+    border: 8px solid #5eff4d;
+ }
+ .contrastThemeWindow {
+    border: 8px solid rgb(151, 105, 56);
+ }
   .output {
     width: 90%; 
     max-width: 1200px; 
