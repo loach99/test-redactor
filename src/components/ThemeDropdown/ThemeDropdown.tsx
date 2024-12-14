@@ -1,12 +1,14 @@
 import { themeList } from '../../constants/codeLanguage';
 import styles from './styles/Select.module.css'
 interface ThemeProps {
-    handleThemeChange: (name: string) => void
+    handleThemeChange: (name: string) => void,
+    selectedTheme: string
+    
 }
-const ThemeDropdown = ({ handleThemeChange }: ThemeProps) => {
+const ThemeDropdown = ({ handleThemeChange,selectedTheme }: ThemeProps) => {
     return (
         <div>
-            <select className={styles.select} onChange={(e) => handleThemeChange(e.target.value)}>
+            <select className={styles.select} defaultValue={selectedTheme} onChange={(e) => handleThemeChange(e.target.value)}>
               {themeList?.map((option) => (
                 <option key={option.id}>{option.value}</option>
               ))}

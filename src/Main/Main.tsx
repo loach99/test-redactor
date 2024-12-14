@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
+import classNames from "classnames";
 import CodeEditor from "../components/CodeEditor/CodeEditor";
 import Select from "../components/SelectList/Select";
 import Output from "../components/Output/Output";
@@ -34,40 +35,26 @@ const Main = () => {
     const selectLanguage = (lang: string) => {
         setLang(languageOptions.filter(elem => elem.value === lang)[0])
     }
-    const changeTheme = () => {
-        let containerClass = styles.editor_container;
-        let window = styles.editor_window;
+    const selectedTheme = localStorage.getItem('theme');
+    const containerClass = classNames(styles.editor_container, {
+        [styles.lightTheme]: selectedTheme === "vs",
+        [styles.darkTheme]: selectedTheme === "vs-dark",
+        [styles.contrastTheme]: selectedTheme === "hc-black",
+    });
 
-        if (localStorage.getItem('theme') === "vs") {
-            containerClass += ` ${styles.lightTheme}`;
-            window += ` ${styles.lightThemeWindow}`
-        } else if (localStorage.getItem('theme') === "vs-dark") {
-            containerClass += ` ${styles.darkTheme}`;
-            window += ` ${styles.darkThemeWindow}`
-
-        } else if (localStorage.getItem('theme') === "hc-black") {
-            containerClass += ` ${styles.contrastTheme}`;
-            window += ` ${styles.contrastThemeWindow}`
-
-        }
-        setActiveTheme({
-            [styles.editor_container]: containerClass,
-            [styles.editor_window]: window,
-        })
-        return
-    }
-
-    useEffect(() => {
-        changeTheme();
-    }, [theme])
+    const windowClass = classNames(styles.editor_window, {
+        [styles.lightThemeWindow]: selectedTheme === "vs",
+        [styles.darkThemeWindow]: selectedTheme === "vs-dark",
+        [styles.contrastThemeWindow]: selectedTheme === "hc-black",
+    });
     return (
-        <div className={activeTheme[styles.editor_container]}>
-            <div className={activeTheme[styles.editor_window]}>
+        <div className={containerClass}>
+            <div className={windowClass}>
                 <div className={styles.editor_header}>
                     <Select
                         selectLanguage={selectLanguage} />
                     <ThemeDropdown
-                        handleThemeChange={handleThemeChange} />
+                        handleThemeChange={handleThemeChange} selectedTheme={selectedTheme} />
                     <Button
                         proccessing={proccessing}
                         handleCodeRun={handleCodeRun} />
