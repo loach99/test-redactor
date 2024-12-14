@@ -1,25 +1,21 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
+import {useState } from "react";
 import classNames from "classnames";
-import CodeEditor from "../components/CodeEditor/CodeEditor";
-import Select from "../components/SelectList/Select";
-import Output from "../components/Output/Output";
-import ThemeDropdown from "../components/ThemeDropdown/ThemeDropdown";
-import { languageOptions } from "../constants/codeLanguage";
+import CodeEditor from "../../components/CodeEditor/CodeEditor";
+import Select from "../../components/SelectList/Select";
+import Output from "../../components/Output/Output";
+import ThemeDropdown from "../../components/ThemeDropdown/ThemeDropdown";
+import { languageOptions } from "../../constants/codeLanguage";
 import styles from './styles/Main.module.css'
-import Modal from "../components/Modal/Modal";
-import { useTheme } from "../hooks/useTheme";
-import useCodeRun from "../hooks/useCodeRun";
-import Button from "../components/Button/Button";
-
+import Modal from "../../components/Modal/Modal";
+import { useTheme } from "../../hooks/useTheme";
+import useCodeRun from "../../hooks/useCodeRun";
+import Button from "../../components/Button/Button";
 interface Language {
     id: number;
     name: string;
     label: string;
     value: string;
 }
-
 const Main = () => {
     const [code, setCode] = useState('//');
     const [lang, setLang] = useState<Language>(languageOptions[0]);
@@ -67,7 +63,6 @@ const Main = () => {
                         code={code} />
                 </div>
             </div>
-
             <div className={styles.output}>
                 <Output
                     activeTheme={activeTheme[styles.output_container]}

@@ -3,7 +3,6 @@ import styles from './styles/Select.module.css'
 interface ThemeProps {
     handleThemeChange: (name: string) => void,
     selectedTheme: string | null
-    
 }
 const ThemeDropdown = ({ handleThemeChange,selectedTheme }: ThemeProps) => {
     return (

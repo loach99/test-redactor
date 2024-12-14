@@ -1,17 +1,17 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 export const useTheme = () => {
-    
-    const [theme, setTheme] = useState<string>('');
+    const [theme, setTheme] = useState<string>('vs');
     const [activeTheme, setActiveTheme] = useState<Record<string, string>>({});
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+    }, [theme]);
     const handleThemeChange = (th: string) => {
         setTheme(th);
-        localStorage.setItem('theme', th);
     }
     return {
         handleThemeChange,
         theme,
         activeTheme,
-        setActiveTheme
+        setActiveTheme,
     }
 }

@@ -53,7 +53,6 @@ const useCodeRun = ({ code, lang, setMsg, setIsActive }: CodeRunProps) => {
                         setIsActive(true);
                         setProccessing(false);
                     });
-
             })
     }
     return {
