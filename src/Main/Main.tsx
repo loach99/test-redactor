@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import classNames from "classnames";
 import CodeEditor from "../components/CodeEditor/CodeEditor";
 import Select from "../components/SelectList/Select";
@@ -25,7 +25,7 @@ const Main = () => {
     const [lang, setLang] = useState<Language>(languageOptions[0]);
     const [isErrMsg, setMsg] = useState<string>('');
     const [isActive, setIsActive] = useState<boolean>(false);
-    const { theme, activeTheme, setActiveTheme, handleThemeChange } = useTheme();
+    const { theme, activeTheme, handleThemeChange } = useTheme();
     const { handleCodeRun, proccessing, outputDetails, setProccessing } = useCodeRun({code, lang, setMsg, setIsActive});
     const onChange = (action: string | undefined, data: string | undefined) => {
         if (action === 'code') {
