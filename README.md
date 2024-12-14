@@ -1,50 +1,61 @@
-# React + TypeScript + Vite
+# React Приложение
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Добро пожаловать в проект CodeRedactor! В этом файле представлены инструкции по запуску и настройке приложения на вашем локальном компьютере.
 
-Currently, two official plugins are available:
+## Требования
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Перед началом убедитесь, что у вас установлены следующие инструменты:
 
-## Expanding the ESLint configuration
+- **Node.js** (рекомендуется версия 18.x или выше): [Скачать Node.js](https://nodejs.org/)
+- **npm** или **yarn**: менеджеры пакетов для Node.js (npm устанавливается вместе с Node.js)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Установка
 
-- Configure the top-level `parserOptions` property like this:
+1. Склонируйте репозиторий на ваш локальный компьютер:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+   ```bash
+   git clone https://github.com/loach99/test-redactor.git
+   ```
+
+2. Перейдите в папку проекта:
+
+   ```bash
+   cd ваш_репозиторий
+   ```
+
+3. Установите все зависимости:
+
+   ```bash
+   npm install
+   ```
+
+## Запуск в режиме разработки
+
+Для запуска приложения в режиме разработки выполните:
+
+```bash
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+После этого приложение будет доступно в браузере по адресу:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+http://localhost:5173/test-redactor/
+```
+
+Любые изменения в коде будут автоматически отображаться благодаря горячей перезагрузке.
+
+
+## Дополнительная информация
+
+- Для изменения конфигурации используйте файл `package.json` или создайте `.env` файл для переменных окружения.
+- Документация по React доступна на [официальном сайте React](https://reactjs.org/).
+
+## Поддержка
+
+Если у вас возникли вопросы или проблемы, пожалуйста, откройте issue в репозитории или свяжитесь с автором проекта.
+
+---
+
+Спасибо, что используете наше приложение!
+
