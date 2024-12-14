@@ -31,17 +31,16 @@ const Main = () => {
     const selectLanguage = (lang: string) => {
         setLang(languageOptions.filter(elem => elem.value === lang)[0])
     }
-    const selectedTheme = localStorage.getItem('theme');
     const containerClass = classNames(styles.editor_container, {
-        [styles.lightTheme]: selectedTheme === "vs",
-        [styles.darkTheme]: selectedTheme === "vs-dark",
-        [styles.contrastTheme]: selectedTheme === "hc-black",
+        [styles.lightTheme]: theme === "vs",
+        [styles.darkTheme]: theme === "vs-dark",
+        [styles.contrastTheme]: theme === "hc-black",
     });
 
     const windowClass = classNames(styles.editor_window, {
-        [styles.lightThemeWindow]: selectedTheme === "vs",
-        [styles.darkThemeWindow]: selectedTheme === "vs-dark",
-        [styles.contrastThemeWindow]: selectedTheme === "hc-black",
+        [styles.lightThemeWindow]: theme === "vs",
+        [styles.darkThemeWindow]: theme === "vs-dark",
+        [styles.contrastThemeWindow]: theme === "hc-black",
     });
     return (
         <div className={containerClass}>
@@ -50,7 +49,7 @@ const Main = () => {
                     <Select
                         selectLanguage={selectLanguage} />
                     <ThemeDropdown
-                        handleThemeChange={handleThemeChange} selectedTheme={selectedTheme} />
+                        handleThemeChange={handleThemeChange} theme={theme} />
                     <Button
                         proccessing={proccessing}
                         handleCodeRun={handleCodeRun} />
